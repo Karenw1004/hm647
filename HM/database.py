@@ -2,7 +2,6 @@ import datetime
 import mysql.connector
 
 class database:
-    #source: https://www.youtube.com/watch?v=xgyVilYfJEo, https://dev.mysql.com/doc/connector-python/en/connector-python-api-errors-error.html
     def __init__(self):
         self.conn = 0
         self.mycursor = 0
