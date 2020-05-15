@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block css_link %}
+  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}"> -->
+  <script> 
+    function print_bill() { 
+        var div_content = document.getElementById("BILL").innerHTML; 
+        var a = window.open('', '', 'height=500, width=500'); 
+        a.document.write('<html>'); 
+        a.document.write('<body><h1>Bill</h1>'); 
+        var curr_date =  new Date(); 
+        var datetime = curr_date.getDate() + "/"+ (curr_date.getMonth()+1)  + "/" 
+        + curr_date.getFullYear() + " @ "  + curr_date.getHours() + ":"  
+        + curr_date.getMinutes() + ":" + curr_date.getSeconds();
+        a.document.write('<h3>Paid at time'+ datetime + '</h3'); 
+        a.document.write(div_content); 
+        a.document.write('</body></html>'); 
+        a.document.close(); 
+        a.print(); 
+    } 
+</script> 
+{% endblock %}
+
+{% block content %}
+<body class="">
+
+  <div class="">
+    {% include "navbar.html" %}
+
+    <div id="BILL">
+        <h3>Patient details</h3>
+        <p>Name : {{name | title }}</p>
+        <p>Sex : {{sex}}</p>
+        <p>Blood : {{blood}}</p>
+        <br>
+        <table id="" class="" border="1" style="border-collapse: collapse">
+            <thead>
+                <tr>
+                <th>No</th>
+                <th>Treatment Name</th>
+                <th>Price</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+              {% for dict in data[0] %}
+              <tr>
+                <td>{{loop.index}}</td>
+                {% for key, value in dict.items() %}
+                <td>{{value}}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+
+    <br>
+    <input type="button" value="Pay the Bill" onclick="print_bill()">  
+
+  </div>
+
+  
+{% endblock %}

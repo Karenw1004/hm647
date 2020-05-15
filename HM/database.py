@@ -116,15 +116,47 @@ class database:
             return False
     def get_bill(self, name,sex,blood):
         if (self.working):
-            self.mycursor.execute(f"SELECT PATIENT_ID,DOCTOR_ID FROM patient WHERE NAME='{name}' AND SEX='{sex}' AND BLOOD='{blood}'")
+            # Get the list of treatment price and name of a certain patient name sex and blood
+            self.mycursor.execute(f'''
+            SELECT treatment.NAME, treatment.PRICE
+            FROM patient
+            JOIN prescribe on prescribe.PATIENT_ID = patient.PATIENT_ID
+            JOIN treatment on prescribe.TREATMENT_ID= treatment .TREATMENT_ID
+            WHERE patient.NAME='{name}' AND patient.SEX='{sex}' AND patient.BLOOD='{blood}'
+            ''')
             result = self.mycursor.fetchall()
 
+            print(result)
             if len(result) == 0: #
                 return False
             else:
-                patient_id = result[0][0]
-                print(patient_id)
+                result_list = []
+                
+                treatment_list = []
+                for treatment_name , treatment_price in result:
+                    temp_dict = {}
+                    temp_dict["NAME"] = treatment_name
+                    temp_dict["PRICE"] = treatment_price
+                    treatment_list.append(temp_dict) 
+
+    
+                # Get the sum of treatment price of a certain patient name sex and blood
+                self.mycursor.execute(f'''
+                    SELECT SUM(treatment.PRICE)
+                    FROM patient
+                    JOIN prescribe on prescribe.PATIENT_ID = patient.PATIENT_ID
+                    JOIN treatment on prescribe.TREATMENT_ID= treatment .TREATMENT_ID
+                    WHERE patient.NAME='{name}' AND patient.SEX='{sex}' AND patient.BLOOD='{blood}'
+                    GROUP BY patient.PATIENT_ID
+                ''')
+                total_treatment_price = self.mycursor.fetchone()
+                total_treatment_price = total_treatment_price[0]
+
+                result_list.append(treatment_list)
+                result_list.append(total_treatment_price)
+
+                return result_list
+
                 return False
         else:
             return False
-

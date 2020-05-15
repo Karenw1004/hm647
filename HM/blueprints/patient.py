@@ -18,13 +18,10 @@ def payment():
         sex = request.form["sex"]
         blood = request.form["blood"]
 
-        print(name)
-        print(sex)
-        print(blood)
+        list_of_treament_and_one_sum = db.get_bill(name,sex,blood)
 
-        db.get_bill(name,sex,blood)
-
-        return render_template('paysearch.html')
+        return render_template('bill.html', data=list_of_treament_and_one_sum , name=name, sex=sex, blood=blood)
 
     else:
         return render_template('paysearch.html')
+

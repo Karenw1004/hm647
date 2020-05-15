@@ -9,21 +9,21 @@
 
 {% include "topbar.html" %}
 
-<section class="content">
-    <div class="container-fluid">
+<section class="">
+    <div class="">
         <!-- Small boxes (Stat box) -->
-        <div class="row">
+        <div class="">
             {% for key,item in count_dict.items() %}
-            <div class="col-lg-3 col-6">
-                <div class="small-box  {{ loop.cycle('bg-info','bg-success','bg-danger','bg-warning') }}">
-                    <div class="inner">
+            <div class="">
+                <div class="">
+                    <div class="">
                         <h3>{{item}}</h3>
                         <p>{{key|title}}</p>
                     </div>
-                    <div class="icon">
-                        <i class="{{ loop.cycle('fas fa-procedures','fas fa-user-md','fas fa-user-injured','fas fa-syringe' ) }}"></i>
+                    <div class="">
+                        <i class=""></i>
                     </div>
-                    <a href="/{{key}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/{{key}}" class="">More info</a>
                 </div>
             </div>
             {% endfor %}
