@@ -161,7 +161,7 @@ class database:
 
     def pay_bill(self,patient_id):
         if (self.working):
-            # Get the list of treatment price and name of a certain patient name sex and blood
+            # Update the attribute to is paid when you click the pay button
             self.mycursor.execute(f'''UPDATE prescribe SET IS_PAID=1 WHERE PATIENT_ID={patient_id}''')
             self.conn.commit()   
                 

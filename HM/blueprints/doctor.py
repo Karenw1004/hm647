@@ -32,8 +32,17 @@ def patient():
 def treatment():
     if (is_logged_in()):
         data = db.get_all_treatment_list()
-        icon_list = ['viruses','radiation-alt','disease','crutch','dna','capsules','dumbbell','flask','assistive-listening-systems', 'brain']
-        return render_template('treatment.html', data=data, list= icon_list)
+        return render_template('treatment.html', data=data)
+    else:
+        flash('You are not logged in ','warning')
+        return redirect(url_for('auth.login'))
+
+@doctor.route('/delete_treatment/<int:id>', methods=['POST'])
+def delete_treatment(id):
+    print(request.method)
+
+    if (is_logged_in()):
+        return redirect(url_for('doctor.treatment'))
     else:
         flash('You are not logged in ','warning')
         return redirect(url_for('auth.login'))

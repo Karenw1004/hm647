@@ -9,20 +9,48 @@
 
 {% include "topbar.html" %}
 
-<section class="">
+<div class="">
+
+    <section class="">
     <div class="">
-        {% for dict in data %}
-        
+    <div class="">
         <div class="">
-            <h3>{{dict['TREATMENT_ID']}}</h3>
-            <p>{{dict['NAME']}}</p>
-            <p>{{dict['PRICE']}}</p>
+            <div class="">
+            <h3 class="">Current Available Treatment</h3>
+            </div>
+
+            <div class="">
+                <table id="" class="" border="1" style="border-collapse: collapse">
+                    <thead>
+                        <tr>
+                        <th>No</th>
+                        <th>Treatment Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                      {% for dict in data %}
+                      <tr>
+                        {% for key, value in dict.items() %}
+                        <td>{{value}}</td>
+                        {% endfor %}
+                        <td>
+                        <form action="/delete_treatment/{{dict['TREATMENT_ID']}}" method="POST">
+                            <input type="submit" value="Delete">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                        </form>
+                        </td>   
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        
-        {% endfor %}
-
     </div>
-</section>        
-
+    </div>
+    </section>
+    
 
 {% endblock %}
