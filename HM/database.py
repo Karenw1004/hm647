@@ -156,7 +156,5 @@ class database:
                 result_list.append(total_treatment_price)
 
                 return result_list
-
-                return False
         else:
             return False

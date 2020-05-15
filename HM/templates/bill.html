@@ -18,7 +18,13 @@
         a.document.write('</body></html>'); 
         a.document.close(); 
         a.print(); 
-    } 
+    };
+    window.onafterprint = (e) =>  {
+        console.log("Printing completed...");
+        var the_location = "{{ url_for('patient.payment') }}?next={{request.path}}";
+        window.location.href = the_location;
+        console.log(the_location)
+    };
 </script> 
 {% endblock %}
 
