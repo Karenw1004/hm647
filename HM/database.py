@@ -168,3 +168,13 @@ class database:
             return True
         else:
             return False
+
+    def remove_treatment(self,treament_id):
+        if (self.working):
+            # Delete the treatment that has the same treatment_id 
+            self.mycursor.execute(f"DELETE FROM treatment where TREATMENT_ID='{treament_id}' " )
+            self.conn.commit()   
+                
+            return True
+        else:
+            return False

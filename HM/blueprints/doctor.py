@@ -37,11 +37,15 @@ def treatment():
         flash('You are not logged in ','warning')
         return redirect(url_for('auth.login'))
 
-@doctor.route('/delete_treatment/<int:id>', methods=['POST'])
-def delete_treatment(id):
-    print(request.method)
-
+@doctor.route('/delete_treatment/<int:treatment_id>', methods=['POST'])
+def delete_treatment(treatment_id):
     if (is_logged_in()):
+
+        if (db.remove_treatment(treatment_id)):
+            flash('Delete success ','success')
+            return redirect(url_for('doctor.treatment'))
+        else:
+            flash('Failed to delete ','warning')
         return redirect(url_for('doctor.treatment'))
     else:
         flash('You are not logged in ','warning')
