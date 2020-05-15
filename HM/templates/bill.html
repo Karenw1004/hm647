@@ -18,7 +18,6 @@
         a.document.write('</body></html>'); 
         a.document.close(); 
         a.print(); 
-        console.log("WHAT")
         window.location.href ="{{ url_for('patient.payment') }}";  
     };
 </script> 
@@ -67,9 +66,13 @@
         $(document).ready(function(){
             $("#printButton").click(function(){
                 console.log("{{ url_for('patient.payment') }}");
-
+                let temp_data = {
+                    "NAME": "{{name}}",
+                    "SEX": "{{sex}}",
+                    "BLOOD": "{{blood}}",
+                };
                 // issue an AJAX request with HTTP post to your server side page.
-                $.post("/update_bill", function(data,status){
+                $.post("/update_bill", {data: temp_data},function(status){
                     console.log("Data: " + data + "\nStatus: " + status);
                 });
 
