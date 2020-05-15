@@ -18,12 +18,8 @@
         a.document.write('</body></html>'); 
         a.document.close(); 
         a.print(); 
-    };
-    window.onafterprint = (e) =>  {
-        console.log("Printing completed...");
-        var the_location = "{{ url_for('patient.payment') }}?next={{request.path}}";
-        window.location.href = the_location;
-        console.log(the_location)
+        console.log("WHAT")
+        window.location.href ="{{ url_for('patient.payment') }}";  
     };
 </script> 
 {% endblock %}
@@ -65,8 +61,25 @@
     </div>
 
     <br>
-    <input type="button" value="Pay the Bill" onclick="print_bill()">  
+    <button id="printButton" value="Pay the Bill" onClick="print_bill()">Pay the Bill</button> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+            $("#printButton").click(function(){
+                console.log("{{ url_for('patient.payment') }}");
 
+                // issue an AJAX request with HTTP post to your server side page.
+                $.post("/update_bill", function(data,status){
+                    console.log("Data: " + data + "\nStatus: " + status);
+                });
+
+                // to prevent the default action
+                return false;
+            
+            });
+                  
+    });
+    </script>
   </div>
 
   

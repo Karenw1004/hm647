@@ -125,7 +125,6 @@ class database:
             ''')
             result = self.mycursor.fetchall()
 
-            print(result)
             if len(result) == 0: #
                 return False
             else:
