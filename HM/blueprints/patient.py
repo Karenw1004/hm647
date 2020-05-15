@@ -11,6 +11,20 @@ def is_logged_in():
         return False
 
 
-@patient.route('/payment')
+@patient.route('/paysearch', methods=['GET','POST'])
 def payment():
-    return render_template('payment.html')
+    if (request.method == "POST"):
+        name = request.form["name"].lower()
+        sex = request.form["sex"]
+        blood = request.form["blood"]
+
+        print(name)
+        print(sex)
+        print(blood)
+
+        db.get_bill(name,sex,blood)
+
+        return render_template('paysearch.html')
+
+    else:
+        return render_template('paysearch.html')

@@ -114,4 +114,17 @@ class database:
             
         else:
             return False
+    def get_bill(self, name,sex,blood):
+        if (self.working):
+            self.mycursor.execute(f"SELECT PATIENT_ID,DOCTOR_ID FROM patient WHERE NAME='{name}' AND SEX='{sex}' AND BLOOD='{blood}'")
+            result = self.mycursor.fetchall()
+
+            if len(result) == 0: #
+                return False
+            else:
+                patient_id = result[0][0]
+                print(patient_id)
+                return False
+        else:
+            return False
 
