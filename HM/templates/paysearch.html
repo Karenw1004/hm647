@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block css_link %}
+  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}"> -->
+{% endblock %}
+
+{% block content %}
+<body class="">
+
+  <div class="">
+    {% include "navbar.html" %}
+
+
+  <form class="" action="/paysearch" method="POST">
+    <h1>Payment For Patient</h1>
+    <label for="name">Name: </label>
+    <input type="text" name="name" placeholder="Name">
+    <br>
+
+    <label for="sex">Sex: </label>
+    <input type="radio" name="sex" value="Male" required><label for="Male">Male</label>
+    <input type="radio" name="sex" value="Female" required><label for="Female">Female</label>
+    <br>
+
+    <label for="blood">Blood type: </label>
+    <input type="radio" name="blood" value="A" required><label for="A">A</label>
+    <input type="radio" name="blood" value="B" required><label for="B">B</label>
+    <input type="radio" name="blood" value="C" required><label for="C">C</label>
+    <input type="radio" name="blood" value="D" required><label for="D">D</label>
+    <br>
+
+    <input type="submit" value="Pay" >
+    <br>
+
+  </form>
+
+  </div>
+
+{% endblock %}
