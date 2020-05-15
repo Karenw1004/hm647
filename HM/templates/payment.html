@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block css_link %}
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    {% include "navbar.html" %}
+
+
+  <form class="login-box" action="/register" method="POST">
+    <h1>Payment</h1>
+    <h2>For Patient</h2>
+    <input type="text" name="name" placeholder="Full Name" required>
+    <!--TODO: NAME,SEX,BLOOD-->
+    <input type="text" name="sex" placeholder="Sex" required>
+    <input type="password" name="password1" placeholder="Password" required>
+    <input type="password" name="password2" placeholder="Re enter Password" required>
+    <input type="submit" value="Register" >
+  </form>
+
+  </div>
+
+{% endblock %}

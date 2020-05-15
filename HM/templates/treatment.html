@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block css_link %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<body>
+
+{% include "topbar.html" %}
+
+<section class="content">
+    <div class="container-fluid">
+        {% for dict in data %}
+        
+        {% if loop.index0 % 4 == 0 %}
+        <div class="row">
+        {% endif %}
+            <div class="col-lg-3 col-6">
+                <div class="small-box  {{ loop.cycle('bg-info','bg-success','bg-danger','bg-warning') }}">
+                    <div class="inner">
+                        <h3>{{dict['TREATMENT_ID']}}</h3>
+                        <p>{{dict['NAME']}}</p>
+                        <p>Auriculotherapy (also auricular therapy, ear acupuncture, and auriculoacupuncture) is a form of alternative medicine based on the idea that the ear is a micro system, which reflects the entire body, represented on the auricle, the outer portion of the ear.</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-{{list[loop.index0]}}"></i>
+                    </div>
+                    
+                    <!-- <a href="/{{key}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+                </div>
+            </div>
+        
+        {% if loop.index0 == loop.length-1 or ( loop.index0 != 0 and (loop.index0 +1) %4 ==0) %}
+        </div>    
+        {% endif %}
+
+        {% endfor %}
+
+    </div>
+</section>        
+
+
+{% endblock %}

@@ -1,0 +1,10 @@
+<header class="masthead mb-auto">
+    <div class="inner">
+        <h3 class="masthead-brand">Hospital Management</h3>
+        <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link {% if request.path == '/' %}active {% endif %}" href='/'>Home</a>
+        <a class="nav-link {% if request.path == '/login' %}active {% endif %}" href='/login'>Login</a>
+        <a class="nav-link {% if request.path == '/payment' %}active {% endif %}" href='/payment'>Payment</a>
+        </nav>
+    </div>
+</header>
