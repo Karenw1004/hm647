@@ -117,7 +117,7 @@ class database:
         if (self.working):
             # Get the list of treatment price and name of a certain patient name sex and blood
             self.mycursor.execute(f'''
-            SELECT treatment.NAME, treatment.PRICE
+            SELECT patient.PATIENT_ID, treatment.NAME, treatment.PRICE
             FROM patient
             JOIN prescribe on prescribe.PATIENT_ID = patient.PATIENT_ID
             JOIN treatment on prescribe.TREATMENT_ID= treatment .TREATMENT_ID
@@ -131,7 +131,7 @@ class database:
                 result_list = []
                 
                 treatment_list = []
-                for treatment_name , treatment_price in result:
+                for patient_id, treatment_name , treatment_price in result:
                     temp_dict = {}
                     temp_dict["NAME"] = treatment_name
                     temp_dict["PRICE"] = treatment_price
@@ -144,7 +144,8 @@ class database:
                     FROM patient
                     JOIN prescribe on prescribe.PATIENT_ID = patient.PATIENT_ID
                     JOIN treatment on prescribe.TREATMENT_ID= treatment .TREATMENT_ID
-                    WHERE patient.NAME='{name}' AND patient.SEX='{sex}' AND patient.BLOOD='{blood}'
+                    WHERE patient.NAME='{name}' AND patient.SEX='{sex}' 
+                    AND patient.BLOOD='{blood}' AND prescribe.IS_PAID=0
                     GROUP BY patient.PATIENT_ID
                 ''')
                 total_treatment_price = self.mycursor.fetchone()
@@ -152,9 +153,18 @@ class database:
 
                 result_list.append(treatment_list)
                 result_list.append(total_treatment_price)
-
+                result_list.append(result[0][0])
+                
                 return result_list
         else:
             return False
 
-    # def pay_bill(self,)
+    def pay_bill(self,patient_id):
+        if (self.working):
+            # Get the list of treatment price and name of a certain patient name sex and blood
+            self.mycursor.execute(f'''UPDATE prescribe SET IS_PAID=1 WHERE PATIENT_ID={patient_id}''')
+            self.conn.commit()   
+                
+            return True
+        else:
+            return False
