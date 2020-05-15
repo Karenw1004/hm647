@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block css_link %}
-  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}"> -->
+  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}"> --> 
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
   <div class="">
     {% include "navbar.html" %}
 
-    <form class="" action="/login" method="POST">
+    <!-- <form class="" action="/login" method="POST">
       <h1>Login</h1>
       <label for="name">Name: </label>
       <input type="text" name="name" placeholder="Full name">
@@ -32,7 +32,17 @@
   
       <input type="submit" value="Register" >
       <br>
+  </form> -->
+
+  <form class="login-box" action="/register" method="POST">
+    <h1>Register</h1>
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password1" placeholder="Password" required>
+    <input type="password" name="password2" placeholder="Re enter Password" required>
+    <input type="submit" value="Register" >
   </form>
+
 
   </div>
 
