@@ -12,15 +12,14 @@
     {% include "navbar.html" %}
 
     <main role="" class="">
-      <h1 class="">Hospital Management</h1>
-      <p class="">Login to keep track your patients</p>
-      <p class="">
-          <a href="login" class="">Login</a>
-      </p>
+      <h1 data-text="Hospital Management"class="">Hospital Management</h1>
+      <form action="/login" method="get" >
+        <button type="submit">Login</button>
+     </form>
     </main>
 
     <footer class="">
-        <div class="">
+        <div class="bottom-right">
             <p>Made by Karen Setiawan and Zhou Jialei</p>
         </div>
     </footer>
