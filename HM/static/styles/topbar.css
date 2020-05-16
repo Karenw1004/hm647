@@ -1,12 +1,23 @@
-a
-{
-    color: 	#6495ED;
-    text-transform: uppercase;
-    font-weight: 500; 
-    text-decoration: none
-}
-a:hover{
-    color: #8BC34A;
-    text-transform: uppercase;
-    font-weight: 500; 
-}
+.nb {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .b a {
+    float: left;
+    color: #5c0c0c;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .b a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .b a.active {
+    background-color: #ddd;
+    color: black;
+  }
