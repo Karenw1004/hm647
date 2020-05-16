@@ -1,9 +1,9 @@
-body{
+body
+{
     margin: 0;
     padding: 0;
     font-family: consolas;
     background-color: #778899;
-    font-size: 1.1em;
 }
 .pay-box{
     width: 400px;
@@ -21,27 +21,32 @@ body{
     text-transform: uppercase;
     font-weight: 500;
 }
-.pay-box input[type = "text"]
+.oval
 {
     border: 0;
     background: none;
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #03A9F4;
     padding: 14px 10px;
-    width: 200px;
     outline: none;
     color: white;
     border-radius: 24px;
     transition: 0.25s; 
 } 
+
+.green-oval {
+    border: 2px solid #8BC34A;
+    cursor: pointer;
+}
+
+.blue-oval{
+    border: 2px solid #03A9F4;
+    width: 200px;
+} 
 .pay-box input[ type = "radio"]{
     border: 0;
-    background: none;
-    display: block;
     margin: 20px auto;
-    text-align: center;
     border: 2px solid #03A9F4;
     padding: 14px 10px;
     width: 20px;
@@ -50,17 +55,6 @@ body{
     border-radius: 24px;
     transition: 0.25s;
 }
-.pay-box input[Type="submit"]{
-    border: 0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid #8BC34A;
-    padding: 14px 40px;
-    outline: none;
-    color: white;
-    border-radius: 24px;
-    transition: 0.25s;
-    cursor: pointer;
+::placeholder{
+    color: grey;
 }

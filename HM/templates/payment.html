@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block css_link %}
-  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}"> -->
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/navbar.css') }}"> 
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/payment.css') }}">
 {% endblock %}
 
@@ -12,27 +12,27 @@
     {% include "navbar.html" %}
 
 
-  <form class="" action="/payment" method="POST">
+  <form class="pay-box" action="/payment" method="POST">
     <h1>Payment For Patient</h1>
-    <label for="name">Name: </label>
-    <input type="text" name="name" placeholder="Name">
-    <br>
+    <input type="text" class="oval blue-oval "name="name" placeholder="Name">
 
-    <label for="sex">Sex: </label>
-    <input type="radio" name="sex" value="Male" required><label for="Male">Male</label>
-    <input type="radio" name="sex" value="Female" required><label for="Female">Female</label>
-    <br>
-
-    <label for="blood">Blood type: </label>
+    <div class="oval blue-oval">
+      <label for="sex">Sex: </label> <br>
+      <input type="radio" name="sex" value="Male" required><label for="Male">Male</label>
+      <input type="radio" name="sex" value="Female" required><label for="Female">Female</label>
+    </div>
+    
+    <div class="oval blue-oval">
+    <label for="blood">Blood type: </label> <br>
     <input type="radio" name="blood" value="A" required><label for="A">A</label>
     <input type="radio" name="blood" value="B" required><label for="B">B</label>
     <input type="radio" name="blood" value="O" required><label for="O">O</label>
     <input type="radio" name="blood" value="AB" required><label for="AB">AB</label>
-    <br>
+    </div>
 
-    <input type="submit" value="Pay" >
-    <br>
 
+    <input type="submit" class="oval green-oval"value="Pay" >
+    <br>
   </form>
 
   </div>

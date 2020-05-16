@@ -1,10 +1,10 @@
 <header class="">
-    <div class="">
+    <div class="nav-bar">
         <!-- <h3 class="">Hospital Management</h3> -->
-        <nav class="">
-        <a class="" href='/'>Home</a>
-        <a class="" href='/login'>Login</a>
-        <a class="" href='/payment'>Payment</a>
+        <!-- <nav class=""> -->
+        <a class="{% if request.path == '/' %}active {% endif %}" href='/'>Home</a>
+        <a class="{% if request.path == '/login' %}active {% endif %}" href='/login'>Login</a>
+        <a class="{% if request.path == '/payment' %}active {% endif %}" href='/payment'>Payment</a>
         </nav>
     </div>
 </header>
