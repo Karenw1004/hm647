@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block css_link %}
-
- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dashboard.css') }}"> 
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dashboard.css') }}"> 
+ <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/box.css') }}"> 
 {% endblock %}
 
 {% block content %}
@@ -13,20 +13,18 @@
 <section class="">
     <div class="">
         <!-- Small boxes (Stat box) -->
-        <div class="">
+        <div class="grey-box">
             {% for key,item in count_dict.items() %}
             <div class="">
                 <div class="">
-                    <br>
-                    <br>
-                    <div class="item-box">
+                    <div class="oval green-oval">
                         <h3>{{item}}</h3>
                         <p>{{key|title}}</p>
-                    </div>
-                    <div class="">
-                        <i class=""></i>
-                    </div>
+                    {% if key == "patient" or key == "treatment" %}
                     <a href="/{{key}}" class="">More info</a>
+                    {% endif %}
+                </div>
+
                 </div>
             </div>
             {% endfor %}

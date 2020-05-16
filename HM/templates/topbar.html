@@ -3,10 +3,10 @@
     <div class="b">
         <nav class="">
             <a class="{% if request.path == '/dashboard' %}active {% endif %}" href='/dashboard'>Dashboard</a>
-        <a class="{% if request.path == '/Patient' %}active {% endif %}" href='/patient'>Patient</a>
-        <a class="{% if request.path == '/Treatment' %}active {% endif %}" href='/treatment'>Treatment</a>
-        <a class="{% if request.path == '/Doctor' %}active {% endif %}" href='/doctor'>Doctor</a>
-        <a class="{% if request.path == '/Bed' %}active {% endif %}" href='/bed'>Bed</a>
+            <a class="{% if request.path == '/patient' %}active {% endif %}" href='/patient'>Patient</a>
+            <a class="{% if request.path == '/treatment' %}active {% endif %}" href='/treatment'>Treatment</a>
+            <a class="{% if request.path == '/logout' %}active {% endif %}" href='/logout'>Logout</a>
+
         </nav>
     </div>
 </header>

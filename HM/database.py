@@ -64,7 +64,7 @@ class database:
             
             result_list = []
             
-            for patient_id, name, sex, blood, heart, temp, pulse, bed, room, doctor in result:
+            for patient_id, name, sex, blood, heart, temp, pulse, bed, room in result:
                 temp_dict = {}
                 temp_dict["PATIENT_ID"] = patient_id
                 temp_dict["NAME"] = name
