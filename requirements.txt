@@ -69,7 +69,7 @@ semantic-version==2.5.0
 six==1.11.0
 stdlib-list==0.5.0
 tensorboard==2.0.1
-tensorflow==2.0.0
+tensorflow==2.0.1
 tensorflow-estimator==2.0.1
 termcolor==1.1.0
 typed-ast==1.4.0
