@@ -30,6 +30,7 @@
     <input type="radio" name="blood" value="AB" required><label for="AB">AB</label>
     </div>
 
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 
     <input type="submit" class="oval green-oval"value="Pay" >
     <br>

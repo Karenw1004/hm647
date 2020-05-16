@@ -20,6 +20,8 @@
     <input type="text" name="username" placeholder="Username" required>
     <input type="password" name="password1" placeholder="Password" required>
     <input type="password" name="password2" placeholder="Re enter Password" required>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
     <input type="submit" value="Register" >
   </form>
 
