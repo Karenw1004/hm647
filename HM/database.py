@@ -1,5 +1,5 @@
-import datetime
 import mysql.connector
+import bcrypt
 
 class database:
     def __init__(self):
@@ -32,7 +32,7 @@ class database:
             print("HERE")
             if len(result) == 1:
                 # Check if password match
-                if (result[0][2] == password ):
+                if bcrypt.checkpw(password.encode(), result[0][2].encode()):
                     return result
                 else:
                     return False # Wrong Password
@@ -84,6 +84,14 @@ class database:
                 result = self.mycursor.fetchall()
                 
                 if len(result) == 0: #if none, it is a good username
+                    # Hash password
+                    salt = bcrypt.gensalt()
+                    OK = bcrypt.hashpw("admin".encode("utf-8"), salt)
+                    LOL = OK.decode("utf-8")
+                    print(LOL)
+                    hashed = bcrypt.hashpw(password.encode("utf-8"), salt)
+                    password = hashed.decode("utf-8")
+
                     self.mycursor.execute("SELECT MAX(DOCTOR_ID) FROM doctor;")
                     the_last_id = self.mycursor.fetchone()[0]  
                     
