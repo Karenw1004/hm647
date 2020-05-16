@@ -2,27 +2,36 @@
 
 {% block css_link %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/navbar.css') }}"> 
-
-  <!-- <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}"> --> 
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/box.css') }}">
 {% endblock %}
 
 {% block content %}
 <body class="">
 
-  <div class="">
-    {% include "navbar.html" %}
+  {% include "navbar.html" %}
 
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+      {% if category == "error" or category == "warning"  %}
+        <div class="oval error-oval">{{message}} </div>
+      {% else %}
+        <div class="oval success-oval">{{message}} </div>
 
-  <form class="login-box" action="/register" method="POST">
+      {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  <form class="grey-box" action="/register" method="POST">
     <h1>Register</h1>
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password1" placeholder="Password" required>
-    <input type="password" name="password2" placeholder="Re enter Password" required>
+    <input type="text" name="name" class="oval blue-oval" placeholder="Full Name" required>
+    <input type="text" name="username" class="oval blue-oval" placeholder="Username" required>
+    <input type="password" name="password1" class="oval blue-oval" placeholder="Password" required>
+    <input type="password" name="password2" class="oval blue-oval" placeholder="Re enter Password" required>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 
-    <input type="submit" value="Register" >
+    <input type="submit" class="oval green-oval" value="Register" >
   </form>
 
 

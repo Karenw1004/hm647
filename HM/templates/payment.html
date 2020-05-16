@@ -2,7 +2,7 @@
 
 {% block css_link %}
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/navbar.css') }}"> 
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/payment.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/box.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -11,10 +11,22 @@
   <div class="">
     {% include "navbar.html" %}
 
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+      {% if category == "error" or category == "warning"  %}
+        <div class="oval error-oval">{{message}} </div>
+      {% else %}
+        <div class="oval success-oval">{{message}} </div>
 
-  <form class="pay-box" action="/payment" method="POST">
+      {% endif %}
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  <form class="grey-box" action="/payment" method="POST">
     <h1>Payment For Patient</h1>
-    <input type="text" class="oval blue-oval "name="name" placeholder="Name">
+    <input type="text" class="oval blue-oval" name="name" placeholder="Name">
 
     <div class="oval blue-oval">
       <label for="sex">Sex: </label> <br>
@@ -32,7 +44,7 @@
 
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 
-    <input type="submit" class="oval green-oval"value="Pay" >
+    <input type="submit" class="oval green-oval" value="Pay" >
     <br>
   </form>
 

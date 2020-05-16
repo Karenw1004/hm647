@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block css_link %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/navbar.css') }}"> 
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/navbar.css') }}"> 
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/box.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -11,11 +11,24 @@
   <div class="">
     {% include "navbar.html" %}
 
-  <form class="login-box" action="/login" method="POST">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+      {% if category == "error" or category == "warning"  %}
+        <div class="oval error-oval">{{message}} </div>
+      {% else %}
+        <div class="oval success-oval">{{message}} </div>
+
+      {% endif %}
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  <form class="grey-box" action="/login" method="POST">
     <h1>Login</h1>
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Login" >
+    <input type="text" class="oval blue-oval" name="username" placeholder="Username">
+    <input type="password" class="oval blue-oval" name="password" placeholder="Password">
+    <input type="submit" class="oval green-oval" value="Login" >
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
 
     <a href="/register">Register a new account</a>
