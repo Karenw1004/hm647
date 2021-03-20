@@ -7,7 +7,7 @@ Flask-WTF==0.14.3
 gevent==1.4.0
 gunicorn==19.9.0
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 mysql==0.0.2
 mysql-connector-python-rf==2.2.2
